@@ -1,0 +1,13 @@
+{
+  "name": "Red2Green",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:inayelle-arts/red2green",
+  "author": "Vladislav Kalashnikov-Travin <inayelle.arts@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1"
+  }
+}
