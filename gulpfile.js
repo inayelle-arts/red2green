@@ -25,8 +25,7 @@ gulp.task('sass', function () {
 gulp.task('ts', function () {
     return gulp.src(`${srcScripts}/**/*.ts`)
                .pipe(ts({
-                            noImplicitAny: true,
-                            outFile: 'bundle.js'
+                            noImplicitAny: true
                         }))
                .on('error', console.log)
                .pipe(gulp.dest(destScripts));
@@ -54,6 +53,7 @@ gulp.task(
         'prepare-fa',
         'prepare-bootstrap',
         'prepare-jquery',
+        'prepare-cryptojs',
         'sass',
         'ts'
     ]
@@ -65,7 +65,11 @@ gulp.task('prepare-bootstrap', function () {
 });
 
 gulp.task('prepare-jquery', function () {
-    return gulp.src(`${librariesRoot}/jquery/dist/jquery.js`)
+    gulp.src(`${librariesRoot}/jquery/dist/jquery.js`)
+        .pipe(gulp.dest(`${destScripts}/jquery`));
+
+    return gulp.src(
+        `${librariesRoot}/jquery-validation/dist/jquery.validate.js`)
                .pipe(gulp.dest(`${destScripts}/jquery`));
 });
 
@@ -79,6 +83,12 @@ gulp.task('prepare-fa', function () {
 
     return gulp.src(`${fontAwesomeRoot}/webfonts/*`)
                .pipe(gulp.dest(`${destStyles}/webfonts`));
+});
+
+gulp.task('prepare-cryptojs', function () {
+    return gulp.src(
+        `${librariesRoot}/crypto-js/crypto-js.js`)
+        .pipe(gulp.dest(destScripts));
 });
 
 gulp.task('default', sequence.sync(['cleanup', 'build']));

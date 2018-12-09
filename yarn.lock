@@ -7,7 +7,19 @@
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.6.0.tgz#7d7624cdb0ef2edd8a91baa193398e6ad16cb21c"
   integrity sha512-cB426XiX7R421kL8XnTWXlBUzeOYWl63KTUw1wP3fnmNBCuWeLGqglmZGheu0TClBSHZl5HVnKQ0uFFRtn43JQ==
 
-"@types/jquery@^3.3.24":
+"@types/crypto-js@^3.1.43":
+  version "3.1.43"
+  resolved "https://registry.yarnpkg.com/@types/crypto-js/-/crypto-js-3.1.43.tgz#b859347d6289ba13e347c335a4c9efa63337a748"
+  integrity sha512-EHe/YKctU3IYNBsDmSOPX/7jLHPRlx8WaiDKSY9JCTnJ8XJeM4c0ZJvx+9Gxmr2s2ihI92R+3U/gNL1sq5oRuQ==
+
+"@types/jquery.validation@^1.16.5":
+  version "1.16.5"
+  resolved "https://registry.yarnpkg.com/@types/jquery.validation/-/jquery.validation-1.16.5.tgz#62756c5c6594c31ef453b44d5c1777e3dc68f9b1"
+  integrity sha512-KLSZQ6MBx4KbaPDP3WucqXkJojgI29+uVBkcHvzyAUUDdExkd60vNHc7++HhZokWk1e7EExxKHLDEAWaQWC2Vg==
+  dependencies:
+    "@types/jquery" "*"
+
+"@types/jquery@*", "@types/jquery@^3.3.24":
   version "3.3.24"
   resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.3.24.tgz#3af73accd9da56a1fd59c706ca2145bd73a91c65"
   integrity sha512-o0FYWKB6tr5rMMtuljVCmehN1RvmBimr7spy/JncdS3a5Z3KyCgoEH1D3vJVkYPE5F0/dYH+8u2uLus2Gydrfg==
@@ -642,6 +654,11 @@ cross-spawn@^3.0.0:
   dependencies:
     lru-cache "^4.0.1"
     which "^1.2.9"
+
+crypto-js@^3.1.9-1:
+  version "3.1.9-1"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.1.9-1.tgz#fda19e761fc077e01ffbfdc6e9fdfc59e8806cd8"
+  integrity sha1-/aGedh/Ad+Af+/3G6f38WeiAbNg=
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -1799,7 +1816,14 @@ isstream@~0.1.2:
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
-jquery@^3.3.1:
+jquery-validation@^1.19.0:
+  version "1.19.0"
+  resolved "https://registry.yarnpkg.com/jquery-validation/-/jquery-validation-1.19.0.tgz#0fedf0c0483a030c4fff072398898ac18cfd6e40"
+  integrity sha512-i1ygcs9K9eI0jqQ8fiOZdT0Ofw941YII1zyPQDUkBS8t2G8SoSWz8UUEVT6gV1KvsaBbovtL8YxjLALACR0syQ==
+  dependencies:
+    jquery "^1.7 || ^2.0 || ^3.1"
+
+"jquery@^1.7 || ^2.0 || ^3.1", jquery@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
   integrity sha512-Ubldcmxp5np52/ENotGxlLe6aGMvmF4R8S6tZjsP6Knsaxd/xp3Zrh50cG93lR6nPXyUFwzN3ZSOQI0wRJNdGg==

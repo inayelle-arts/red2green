@@ -10,7 +10,6 @@ $user = $user ?? null;
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-
     <!--Bootstrap-->
     <link rel="stylesheet" href="/static/styles/css/bootstrap/bootstrap.css">
 
@@ -24,7 +23,7 @@ $user = $user ?? null;
     <script type="text/javascript" src="/static/scripts/js/jquery/jquery.js"></script>
 
     <!--Self-provided scripts-->
-    <script type="text/javascript" src="/static/scripts/js/bundle.js"></script>
+    <script type="text/javascript" src="/static/scripts/js/common.js"></script>
 
     <title>Red2Green</title>
 </head>
@@ -71,6 +70,11 @@ $user = $user ?? null;
 					
 					<?php } else { ?>
 
+                        <a href="/profile/index" class="btn btn-secondary menu-item-optional"
+                           style="display: none;">
+                            my profile
+                        </a>
+                        
                         <a href="/sign/out" class="btn btn-secondary menu-item-optional"
                            style="display: none;">
                             sign out
@@ -87,7 +91,7 @@ $user = $user ?? null;
     </div>
 </header>
 
-<div id="content" style="margin-bottom: 10px;">
+<div id="content" style="margin-top: 10px; margin-bottom: 10px;">
 	<?= $viewContent ?? 'no content' ?>
 </div>
 

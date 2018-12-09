@@ -19,7 +19,7 @@ $data = $data ?? [];
 	<?php foreach ($data as $tour): ?>
 
         <div class="tour">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-7">
                     <img class="tour-img" src="storage/<?= $tour->src_main_image ?>" alt="tour img">
                 </div>

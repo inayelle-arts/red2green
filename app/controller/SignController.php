@@ -22,6 +22,12 @@ class SignController extends AppControllerBase
 		return $this->viewDefault('in');
 	}
 	
+	// GET sign/up
+	public function upAction() : bool
+	{
+		return $this->viewDefault('up');
+	}
+	
 	// POST sign/postin
 	public function postInAction() : bool
 	{
@@ -46,12 +52,6 @@ class SignController extends AppControllerBase
 		return $this->redirect('/');
 	}
 	
-	// GET sign/up
-	public function upAction() : bool
-	{
-		return $this->content('up');
-	}
-	
 	// POST sign/postUp
 	public function postUpAction() : bool
 	{
@@ -63,12 +63,16 @@ class SignController extends AppControllerBase
 			return $this->signUpFailed();
 		}
 		
-		if ($this->_model->signUp($email, $password))
+		$user = $this->_model->signUp($email, $password);
+		
+		if ($user === null)
 		{
-			return $this->redirect('/');
+			return $this->signUpFailed();
 		}
 		
-		return $this->signUpFailed();
+		$this->keepUser($user);
+		
+		return $this->redirect('/');
 	}
 	
 	// GET sign/out

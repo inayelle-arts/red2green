@@ -19,8 +19,7 @@
     <script type="text/javascript" src="/static/scripts/js/jquery/jquery.js"></script>
 
     <!--Self-provided scripts-->
-    <script type="text/javascript" src="/static/scripts/js/bundle.js"></script>
-    
+    <script type="text/javascript" src="/static/scripts/js/common.js"></script>
     
     <title>Red2Green</title>
 </head>

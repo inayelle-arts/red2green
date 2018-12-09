@@ -54,7 +54,15 @@ class Application extends ApplicationBase
 			'^order/{tour:[a-z]+}$',
 			PatternRoute::PRIORITY_MID,
 			'order',
-			'orderSpecifiedTour'
+			'orderTour'
+		);
+		
+		$profileRoute = new StaticRoute(
+			'profile',
+			'profile',
+			'profile',
+			'index',
+			PatternRoute::PRIORITY_MID
 		);
 		
 		$mvcRoute = new PatternRoute(
@@ -65,6 +73,7 @@ class Application extends ApplicationBase
 		
 		$builder->useRoute($indexRoute)
 		        ->useRoute($tourRoute)
+		        ->useRoute($profileRoute)
 		        ->useRoute($orderRoute)
 		        ->useRoute($mvcRoute);
 	}
