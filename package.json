@@ -1,0 +1,25 @@
+{
+    "name": "red_to_green",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "git@github.com:inayelle-arts/red2green",
+    "author": "Vladislav Kalashnikov-Travin <inayelle.arts@gmail.com>",
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.6.0",
+        "bootstrap": "^4.1.3",
+        "jquery": "^3.3.1"
+    },
+    "devDependencies": {
+        "@types/jquery": "^3.3.24",
+        "gulp": "^3.9.1",
+        "gulp-sass": "^4.0.2",
+        "gulp-typescript": "^5.0.0",
+        "typescript": "^3.2.2"
+    },
+    "scripts": {
+        "sass-watch": "yarn run gulp sass-watch",
+        "ts-watch": "yarn run gulp ts-watch"
+    }
+}

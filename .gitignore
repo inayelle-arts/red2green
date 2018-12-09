@@ -1,2 +1,6 @@
-**/logs/
-**/.idea/
+/logs/
+/.idea/
+/static/libs/
+/vendor/
+/node_modules/
+**/*.log
