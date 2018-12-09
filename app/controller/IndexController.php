@@ -8,6 +8,5 @@ class IndexController extends AppControllerBase
 {
 	public function indexAction() : void
 	{
-		$this->returnView('index');
 	}
 }

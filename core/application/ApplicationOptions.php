@@ -12,6 +12,9 @@ final class ApplicationOptions
 	/** @var string */
 	private $_appConfigFile;
 	
+	/** @var array */
+	private $_connectionsParams;
+	
 	public function __construct()
 	{
 		$this->_configDir     = PathHelper::combine(FS_ROOT, 'config');
@@ -33,8 +36,18 @@ final class ApplicationOptions
 		return PathHelper::combine($this->_configDir, $this->_appConfigFile);
 	}
 	
+	public function addConnectionParams(string $name, array $connectionParams) : void
+	{
+		$this->_connectionsParams[$name] = $connectionParams;
+	}
+	
 	public function setAppConfigFile(string $appConfig) : void
 	{
 		$this->_appConfigFile = $appConfig;
+	}
+	
+	public function getConnectionParams() : array 
+	{
+		return $this->_connectionsParams;
 	}
 }

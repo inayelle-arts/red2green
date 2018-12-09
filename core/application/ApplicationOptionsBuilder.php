@@ -26,6 +26,12 @@ final class ApplicationOptionsBuilder
 		return $this;
 	}
 	
+	public function useConnectionParams(string $name, array $params) : self
+	{
+		$this->_options->addConnectionParams($name, $params);
+		return $this;
+	}
+	
 	public function build() : ApplicationOptions
 	{
 		$options = $this->_options;

@@ -10,6 +10,7 @@ function dump($object, ... $objects) : void
 }
 
 define('FS_ROOT', realpath(__DIR__));
+define('FS_VENDOR', FS_ROOT.'/vendor');
 
 error_reporting(E_ALL);
 ini_set('display_errors', true);

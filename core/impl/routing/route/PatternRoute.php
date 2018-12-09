@@ -57,7 +57,7 @@ class PatternRoute extends RouteBase
 		
 		if ($this->_routeParams->hasValue('action'))
 		{
-			$this->controller = $this->_routeParams->getValue('action');
+			$this->action = $this->_routeParams->getValue('action');
 		}
 	}
 	
@@ -68,9 +68,9 @@ class PatternRoute extends RouteBase
 			throw new RoutingException('controller');
 		}
 		
-		if (!isset($this->model))
+		if (!isset($this->action))
 		{
-			throw new RoutingException('model');
+			throw new RoutingException('action');
 		}
 	}
 }

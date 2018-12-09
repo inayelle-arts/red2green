@@ -40,6 +40,27 @@ final class Activator
 		return $this->_getController($name, $context, $params);
 	}
 	
+	public function getModelInstance(string $name) : ModelBase
+	{
+		if (array_key_exists($name, $this->_models))
+		{
+			return $this->_models[$name];
+		}
+		
+		$class = $this->_getModelClassName($name);
+		
+		if (!class_exists($class))
+		{
+			throw new ActivatorException("Model ${name} | {$class} not found");
+		}
+		
+		$instance = new $class();
+		
+		$this->_models[$name] = $instance;
+		
+		return $instance;
+	}
+	
 	public function isValidControllerCall(string $controller, string $action) : bool
 	{
 		$class  = $this->_getControllerClassName($controller);
@@ -85,6 +106,18 @@ final class Activator
 		$className = NamespaceHelper::combine(
 			$this->_options->getControllerNamespace(),
 			$controller
+		);
+		
+		return $className;
+	}
+	
+	private function _getModelClassName(string $shortName) : string
+	{
+		$model = ucwords($shortName).$this->_options->getModelPostfix();
+		
+		$className = NamespaceHelper::combine(
+			$this->_options->getModelNamespace(),
+			$model
 		);
 		
 		return $className;

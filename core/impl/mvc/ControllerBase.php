@@ -53,6 +53,26 @@ abstract class ControllerBase implements IController
 		$this->_routeParams = $params;
 		$this->_activator   = $activator;
 		$this->_context     = $context;
+		
+		$this->onInit();
+	}
+	
+	/**
+	 * @return bool continuationg
+	 */
+	public function before() : bool
+	{
+		return true;
+	}
+	
+	public function after() : bool
+	{
+		return true;
+	}
+	
+	protected function onInit()
+	{
+		
 	}
 	
 	protected final function hasRouteParam(string $key) : bool
@@ -74,7 +94,9 @@ abstract class ControllerBase implements IController
 		);
 	}
 	
-	protected final function returnView(string $view, string $layout = null) : void
+	protected final function returnView(
+		string $view, string $layout = null, $viewModel = null
+	) : void
 	{
 		$controllerName = $this->_getStaticShortName();
 		
@@ -115,6 +137,11 @@ abstract class ControllerBase implements IController
 		$this->response->setStatusCode(HttpCode::NOT_FOUND);
 	}
 	
+	protected final function returnRedirect(string $url) : void
+	{
+		$this->response->setHeader("Location", $url);
+	}
+	
 	private function _getStaticShortName() : string
 	{
 		$class = static::class;
@@ -125,9 +152,9 @@ abstract class ControllerBase implements IController
 		
 		return array_pop($parts);
 	}
-
-//	protected final function getModelInstance(string $name) : ModelBase
-//	{
-//		return null;
-//	}
+	
+	protected final function getModelInstance(string $name) : ModelBase
+	{
+		return $this->_activator->getModelInstance($name);
+	}
 }
