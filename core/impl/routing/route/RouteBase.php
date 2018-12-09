@@ -22,14 +22,16 @@ abstract class RouteBase implements IRoute
 	private $_priority;
 	
 	public function __construct(
-		string $name, string $pattern, string $controller, string $action, int $priority
+		string $name, string $pattern, ?string $controller, ?string $action, int $priority
 	)
 	{
-		$this->_name      = $name;
-		$this->_pattern   = $pattern;
+		$this->_name    = $name;
+		$this->_pattern = $pattern;
+		
 		$this->controller = $controller;
 		$this->action     = $action;
-		$this->_priority  = $priority;
+		
+		$this->_priority = $priority;
 	}
 	
 	public function getPattern() : string
@@ -57,8 +59,8 @@ abstract class RouteBase implements IRoute
 		return $this->_priority;
 	}
 	
-	public static function compare(RouteBase $first, RouteBase $last) : bool 
+	public static function compare(RouteBase $first, RouteBase $last) : bool
 	{
-		return $first->getPriority() > $last->getPriority();
+		return $first->getPriority() < $last->getPriority();
 	}
 }

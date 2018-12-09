@@ -11,16 +11,19 @@ class PatternRoute extends RouteBase
 	/** @var IRouteParams */
 	private $_routeParams;
 	
-	public function __construct(string $name, string $pattern, int $priority = 0)
+	public function __construct(
+		string $name, string $pattern, int $priority = 0, string $controller = null,
+		string $action = null
+	)
 	{
-		parent::__construct($name, $pattern, '', '', $priority);
+		parent::__construct($name, $pattern, $controller, $action, $priority);
 	}
 	
 	public function matches(string $uri) : bool
 	{
 		$regex = $this->_getRouteRegex();
 		$match = [];
-	
+		
 		if (RegexHelper::matchAllGroups($regex, $uri, $match))
 		{
 			$this->_routeParams = new RouteParams($match);
@@ -39,10 +42,13 @@ class PatternRoute extends RouteBase
 		return $this->_routeParams;
 	}
 	
-	private function _getRouteRegex() : string 
+	private function _getRouteRegex() : string
 	{
-		$regex = '{(?P<name>[a-z]+):(?P<regex>[a-z0-9_\-\[\]\?\.\*\(\){}\+\,]+)}';
-		$pattern = $this->getPattern();
+		$regex       = '{(?P<name>[a-z]+):(?P<regex>[a-z0-9_\-\[\]\?\.\*\(\){}\+\,]+)}';
+		$pattern     = $this->getPattern();
+		
+		$pattern = trim($pattern, '/');
+		
 		$replacement = "(?P<$1>$2)";
 		
 		return RegexHelper::replaceAllGroups($regex, $pattern, $replacement);
@@ -50,14 +56,16 @@ class PatternRoute extends RouteBase
 	
 	private function _bindParams() : void
 	{
-		if ($this->_routeParams->hasValue('controller'))
+//		if ($this->_routeParams->hasValue('controller'))
+		if (!isset($this->controller))
 		{
 			$this->controller = $this->_routeParams->getValue('controller');
 		}
 		
-		if ($this->_routeParams->hasValue('action'))
+//		if ($this->_routeParams->hasValue('action'))
+		if (!isset($this->action))
 		{
-			$this->action = $this->_routeParams->getValue('action');
+			$this->action = $this->_routeParams->getValue('action') ?? "index";
 		}
 	}
 	

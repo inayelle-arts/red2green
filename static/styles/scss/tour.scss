@@ -1,0 +1,50 @@
+#article-not-found {
+  font-size: 42px;
+  min-height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h4, h5 {
+    display: block;
+  }
+}
+
+.tour-container {
+
+  padding-bottom: 40px;
+
+  .tour-header-text {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 72px;
+    display: inline-block;
+  }
+
+  .tour-header-order-btn-primary {
+    font-size: 40px;
+  }
+
+  .tour-header-order-btn-secondary {
+    margin: 30px auto;
+    font-size: 42px;
+  }
+
+  .tour-subheader {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 32px;
+    display: block;
+    text-align: center;
+  }
+
+  .tour-text {
+    font-size: 20px !important;
+  }
+
+  .tour-image {
+    width: 100%;
+    min-width: 100%;
+  }
+
+}

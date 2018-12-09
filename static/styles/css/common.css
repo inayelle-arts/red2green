@@ -24,37 +24,10 @@
     color: black;
     font-size: 25px; }
 
-.parallax, #index-adv-parallax {
+.parallax {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 500px;
   min-width: 100%; }
-
-#index-adv-parallax {
-  background-image: url("../../img/index/50656.jpg");
-  display: flex;
-  align-items: center;
-  justify-content: center; }
-
-#index-adv-primary-text {
-  color: whitesmoke;
-  font-size: 30px;
-  margin: 0 auto;
-  text-align: center; }
-
-.tour {
-  padding: 10px; }
-  .tour .tour-img {
-    display: inline-block;
-    width: 100%; }
-  .tour .tour-header {
-    font-size: 30px;
-    font-weight: bold;
-    text-align: center; }
-  .tour .tour-description {
-    font-size: 22px;
-    text-align: justify; }
-  .tour .tour-order {
-    text-align: center; }

@@ -94,9 +94,9 @@ abstract class ControllerBase implements IController
 		);
 	}
 	
-	protected final function returnView(
-		string $view, string $layout = null, $viewModel = null
-	) : void
+	protected function view(
+		string $view, string $layout = null, $data = null
+	) : bool
 	{
 		$controllerName = $this->_getStaticShortName();
 		
@@ -130,16 +130,26 @@ abstract class ControllerBase implements IController
 		{
 			$this->response->setBody($viewContent);
 		}
+		
+		return true;
 	}
 	
-	protected final function returnNotFound() : void
+	protected function notFound() : bool 
 	{
 		$this->response->setStatusCode(HttpCode::NOT_FOUND);
+		return true;
 	}
 	
-	protected final function returnRedirect(string $url) : void
+	protected function redirect(string $url) : bool 
 	{
 		$this->response->setHeader("Location", $url);
+		return true;
+	}
+	
+	protected function content(string $content) : bool 
+	{
+		$this->response->setBody($content);
+		return true;
 	}
 	
 	private function _getStaticShortName() : string

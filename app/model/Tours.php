@@ -7,13 +7,20 @@ use app\entity\Tour;
 
 class Tours extends AppModelBase
 {
-	public function create(Tour $tour) : void 
+	public function getTourByLink(string $link) : ?Tour
 	{
-		$this->tours->insert($tour);
+		$result = $this->tours->first(['link' => $link]);
+		
+		if (!$result)
+		{
+			return null;
+		}
+		
+		return $result;
 	}
 	
-	public function get()
+	public function getTop3Tours()
 	{
-		return $this->scheduledTours->all()->execute();
+		return $this->tours->all()->limit(3)->execute();
 	}
 }

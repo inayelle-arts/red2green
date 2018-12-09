@@ -3,3 +3,4 @@ logs/
 static/libs/
 /vendor/
 **/node_modules/
+**/*.log

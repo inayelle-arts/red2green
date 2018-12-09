@@ -76,7 +76,9 @@ final class Activator
 		$controller = $this->_getController($controller, $context, $params);
 		$method     = $this->_getActionMethodName($action);
 		
-		$controller->$method();
+		$simpleParams = array_values($params->asArray());
+		
+		$controller->$method(... $simpleParams);
 	}
 	
 	private function _getController(string $name, ... $ctorParams) : ControllerBase

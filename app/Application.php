@@ -34,11 +34,38 @@ class Application extends ApplicationBase
 	
 	protected function configureRouter(RouterBuilder $builder) : void
 	{
-		$indexRoute = new StaticRoute('index', '', 'index', 'index');
+		$indexRoute = new StaticRoute(
+			'index',
+			'',
+			'index',
+			'index'
+		);
 		
-		$mvcRoute = new PatternRoute('mvc', '^{controller:[a-z]+}/{action:[a-z]+}$');
+		$tourRoute = new PatternRoute(
+			'tourInfo',
+			'^tour/{tour:[a-z]+}$',
+			PatternRoute::PRIORITY_MID,
+			'tour',
+			'info'
+		);
+		
+		$orderRoute = new PatternRoute(
+			'orderTour',
+			'^order/{tour:[a-z]+}$',
+			PatternRoute::PRIORITY_MID,
+			'order',
+			'orderSpecifiedTour'
+		);
+		
+		$mvcRoute = new PatternRoute(
+			'mvc',
+			'^{controller:[a-z]+}/{action:[a-z]+}?$',
+			PatternRoute::PRIORITY_GROUNDED
+		);
 		
 		$builder->useRoute($indexRoute)
+		        ->useRoute($tourRoute)
+		        ->useRoute($orderRoute)
 		        ->useRoute($mvcRoute);
 	}
 	
