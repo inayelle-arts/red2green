@@ -11,6 +11,8 @@ use core\impl\mvc\activator\Activator;
 use core\impl\mvc\activator\ActivatorBuilder;
 use core\impl\routing\RouterBuilder;
 use core\structures\Singleton;
+use Spot\Config;
+use Spot\Locator;
 
 abstract class ApplicationBase
 {
@@ -27,6 +29,9 @@ abstract class ApplicationBase
 	
 	/** @var Activator */
 	private $_activator;
+	
+	/** @var Locator */
+	private $_locator;
 	
 	protected final function __construct()
 	{
@@ -50,11 +55,17 @@ abstract class ApplicationBase
 		catch (\Exception $exception)
 		{
 			$response->setStatusCode(HttpCode::INTERNAL_ERROR);
+			echo $exception->getMessage();
 		}
 		finally
 		{
 			$response->send();
 		}
+	}
+	
+	public final function getLocalor() : Locator
+	{
+		return $this->_locator;
 	}
 	
 	protected abstract function configureActivator(ActivatorBuilder $builder) : void;
@@ -65,13 +76,20 @@ abstract class ApplicationBase
 	
 	private function _configureAll()
 	{
-		$activatorBuilder = new ActivatorBuilder();
-		$this->configureActivator($activatorBuilder);
-		$this->_activator = $activatorBuilder->build();
-		
 		$appOptionsBuilder = new ApplicationOptionsBuilder();
 		$this->configureApp($appOptionsBuilder);
 		$this->_options = $appOptionsBuilder->build();
+		
+		$config = new Config();
+		foreach ($this->_options->getConnectionParams() as $name => $params)
+		{
+			$config->addConnection($name, $params);
+		}
+		$this->_locator = new Locator($config);
+		
+		$activatorBuilder = new ActivatorBuilder();
+		$this->configureActivator($activatorBuilder);
+		$this->_activator = $activatorBuilder->build();
 		
 		$routerBuilder = new RouterBuilder();
 		$this->configureRouter($routerBuilder);

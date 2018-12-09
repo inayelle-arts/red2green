@@ -9,7 +9,6 @@ use core\impl\mvc\activator\ActivatorBuilder;
 use core\impl\routing\route\PatternRoute;
 use core\impl\routing\route\StaticRoute;
 use core\impl\routing\RouterBuilder;
-use core\structures\Singleton;
 
 class Application extends ApplicationBase
 {
@@ -20,15 +19,53 @@ class Application extends ApplicationBase
 		
 		$builder->useConfigDirectory($configDir)
 		        ->useConfigFile($configFile);
+		
+		$connectionParams =
+			[
+				'dbname'   => 'red_to_green',
+				'user'     => 'ina',
+				'password' => 'blessx375',
+				'host'     => 'localhost',
+				'driver'   => 'pdo_pgsql',
+			];
+		
+		$builder->useConnectionParams('default', $connectionParams);
 	}
 	
 	protected function configureRouter(RouterBuilder $builder) : void
 	{
-		$indexRoute = new StaticRoute('index', '', 'index', 'index');
+		$indexRoute = new StaticRoute(
+			'index',
+			'',
+			'index',
+			'index'
+		);
 		
-		$mvcRoute = new PatternRoute('mvc', '{controller:[a-z]+}/{action:[a-z]+}');
+		$tourRoute = new PatternRoute(
+			'tourInfo',
+			'^tour/{tour:[a-z]+}$',
+			PatternRoute::PRIORITY_MID,
+			'tour',
+			'info'
+		);
+		
+		$orderRoute = new PatternRoute(
+			'orderTour',
+			'^order/{tour:[a-z]+}$',
+			PatternRoute::PRIORITY_MID,
+			'order',
+			'orderSpecifiedTour'
+		);
+		
+		$mvcRoute = new PatternRoute(
+			'mvc',
+			'^{controller:[a-z]+}/{action:[a-z]+}?$',
+			PatternRoute::PRIORITY_GROUNDED
+		);
 		
 		$builder->useRoute($indexRoute)
+		        ->useRoute($tourRoute)
+		        ->useRoute($orderRoute)
 		        ->useRoute($mvcRoute);
 	}
 	

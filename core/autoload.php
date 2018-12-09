@@ -16,3 +16,5 @@ spl_autoload_register(
 		return false;
 	}
 );
+
+require_once FS_VENDOR.'/autoload.php';

@@ -1,0 +1,14 @@
+{
+    "name": "ina/red_to_green",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Vladislav Kalashnikov-Travin",
+            "email": "inayelle.arts@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/spot2": "~2.0",
+        "php": ">7.2.0"
+    }
+}

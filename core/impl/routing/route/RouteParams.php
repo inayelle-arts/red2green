@@ -40,4 +40,9 @@ class RouteParams implements IRouteParams
 	{
 		return array_key_exists($key, $this->_params);
 	}
+	
+	public function asArray() : array
+	{
+		return $this->_params;
+	}
 }

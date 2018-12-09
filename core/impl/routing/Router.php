@@ -66,13 +66,25 @@ class Router implements IRouter
 		$controller = $route->getController();
 		$action     = $route->getAction();
 		
+		$routeParams = $route->getRouteParams();
+		
 		if (!$this->_activator->isValidControllerCall($controller, $action))
 		{
 			$context->getResponse()->setStatusCode(HttpCode::NOT_FOUND);
 			return;
 		}
 		
-		$this->_activator->callController($controller, $action, $context, $route->getRouteParams());
+		$instance = $this->_activator->getControllerInstance(
+			$controller,
+			$context,
+			$routeParams
+		);
+		
+		if ($instance->before())
+		{
+			$this->_activator->callController($controller, $action, $context, $routeParams);
+			$instance->after();
+		}
 	}
 	
 	private function _sortRoutesByPriority() : void
