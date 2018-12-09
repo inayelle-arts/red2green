@@ -5,14 +5,23 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="/static/styles/css/bootstrap/bootstrap.css">
 
-    <link rel="stylesheet" href="/static/libs/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="/static/libs/@fortawesome/fontawesome-free/css/all.css">
-    <link rel="stylesheet" href="/static/styles/css/common.css?v=<?= rand() ?>">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="/static/styles/css/fontawesome/all.css">
+
+    <!--Self-provided styles-->
+    <link rel="stylesheet" href="/static/styles/css/common.css">
     <link rel="stylesheet" href="/static/styles/css/tour.css">
-    <script type="text/javascript" src="/static/libs/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="/static/scripts/js/bundle.js"></script>
 
+    <!--JQuery-->
+    <script type="text/javascript" src="/static/scripts/js/jquery/jquery.js"></script>
+
+    <!--Self-provided scripts-->
+    <script type="text/javascript" src="/static/scripts/js/bundle.js"></script>
+    
+    
     <title>Red2Green</title>
 </head>
 <body>

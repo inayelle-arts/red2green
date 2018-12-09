@@ -11,10 +11,19 @@ $user = $user ?? null;
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 
-    <link rel="stylesheet" href="/static/libs/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="/static/libs/@fortawesome/fontawesome-free/css/all.css">
-    <link rel="stylesheet" href="/static/styles/css/common.css?v=<?= rand() ?>">
-    <script type="text/javascript" src="/static/libs/jquery/dist/jquery.js"></script>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="/static/styles/css/bootstrap/bootstrap.css">
+
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="/static/styles/css/fontawesome/all.css">
+
+    <!--Self-provided styles-->
+    <link rel="stylesheet" href="/static/styles/css/common.css">
+
+    <!--JQuery-->
+    <script type="text/javascript" src="/static/scripts/js/jquery/jquery.js"></script>
+
+    <!--Self-provided scripts-->
     <script type="text/javascript" src="/static/scripts/js/bundle.js"></script>
 
     <title>Red2Green</title>

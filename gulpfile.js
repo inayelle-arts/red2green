@@ -3,7 +3,8 @@
 const gulp = require("gulp");
 const sass = require("gulp-sass");
 const ts = require('gulp-typescript');
-const copy = require('gulp-copy');
+const remove = require('gulp-clean');
+const sequence = require('gulp-sync')(gulp);
 
 const fsRoot = './static';
 
@@ -39,14 +40,45 @@ gulp.task('ts-watch', function () {
     gulp.watch('./static/scripts/ts/*.ts', ['ts']);
 });
 
-gulp.task('build', ['prepare-bootstrap', 'prepare-jquery', 'sass', 'ts']);
+gulp.task('cleanup', function () {
+    gulp.src(`${destScripts}`, {read: false})
+        .pipe(remove());
+
+    return gulp.src(`${destStyles}`, {read: false})
+               .pipe(remove());
+});
+
+gulp.task(
+    'build',
+    [
+        'prepare-fa',
+        'prepare-bootstrap',
+        'prepare-jquery',
+        'sass',
+        'ts'
+    ]
+);
 
 gulp.task('prepare-bootstrap', function () {
     return gulp.src(`${librariesRoot}/bootstrap/dist/css/bootstrap.css`)
-               .pipe(gulp.dest(destStyles));
+               .pipe(gulp.dest(`${destStyles}/bootstrap`));
 });
 
 gulp.task('prepare-jquery', function () {
     return gulp.src(`${librariesRoot}/jquery/dist/jquery.js`)
-               .pipe(gulp.dest(destScripts));
+               .pipe(gulp.dest(`${destScripts}/jquery`));
 });
+
+gulp.task('prepare-fa', function () {
+    const fontAwesomeRoot = `${librariesRoot}/@fortawesome/fontawesome-free`;
+    const fontAwesomeDest = `${destStyles}/fontawesome`;
+
+    gulp.src(
+        `${fontAwesomeRoot}/css/all.css`)
+        .pipe(gulp.dest(fontAwesomeDest));
+
+    return gulp.src(`${fontAwesomeRoot}/webfonts/*`)
+               .pipe(gulp.dest(`${destStyles}/webfonts`));
+});
+
+gulp.task('default', sequence.sync(['cleanup', 'build']));
