@@ -41,4 +41,9 @@ class SessionManager implements ISessionManager
 	{
 		session_write_close();
 	}
+	
+	public function removeValue(string $key) : void
+	{
+		unset($_SESSION[$key]);
+	}
 }

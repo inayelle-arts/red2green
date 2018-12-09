@@ -1,3 +1,8 @@
+<?php
+/** @var \app\entity\User $user */
+$user = $user ?? null;
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -35,14 +40,35 @@
                         order a tour
                     </div>
                     <a href="#" class="btn btn-danger menu-item-optional" style="display: none;">
-                        Danger
+                        danger
                     </a>
 
                     <a href="/parthners/index" class="btn btn-primary menu-item-optional"
-                       style="display: 
-                    none;">
-                        Parthners
+                       style="display: none;">
+                        parthners
                     </a>
+					
+					<?php if ($user == null) { ?>
+
+                        <a href="/sign/in" class="btn btn-secondary menu-item-optional"
+                           style="display: none;">
+                            sign in
+                        </a>
+
+                        <a href="/sign/up" class="btn btn-secondary menu-item-optional"
+                           style="display: none;">
+                            sign up
+                        </a>
+					
+					<?php } else { ?>
+
+                        <a href="/sign/out" class="btn btn-secondary menu-item-optional"
+                           style="display: none;">
+                            sign out
+                        </a>
+					
+					<?php } ?>
+
                     <div class="btn btn-secondary" id="menu">
                         menu
                     </div>
