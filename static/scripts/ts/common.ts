@@ -4,33 +4,40 @@ abstract class DomElement
 	
 	protected constructor(dom: JQuery<HTMLElement>)
 	{
+		if (dom === null || typeof dom === 'undefined')
+		{
+			throw new DOMException("Element dom cannot be null!");
+		}
 		this.dom = dom;
 	}
 }
 
 class Menu extends DomElement
 {
-	private elements: Array<MenuElement>;
+	private static readonly ChildClass = '.menu-item-optional';
+	
+	private itemsContainer: JQuery<HTMLElement>;
+	
+	private items: Array<JQuery<HTMLElement>>;
 	
 	private isOpened: boolean;
 	
-	constructor(dom: JQuery<HTMLElement>)
+	constructor(root: JQuery<HTMLElement>, itemsContainer: JQuery<HTMLElement>)
 	{
-		if (dom === null)
-		{
-			throw new DOMException("Element dom cannot be null!");
-		}
+		super(root);
 		
-		super(dom);
 		this.isOpened = false;
+		this.itemsContainer = itemsContainer;
+		
+		this.items = [].slice.apply(itemsContainer.children(Menu.ChildClass));
 	}
 	
 	public bindEvents(): void
 	{
-		this.dom.on("click", this.click);
+		this.dom.on("click", () => this.click());
 	}
 	
-	private click() : void
+	private click(): void
 	{
 		this.isOpened ? this.close() : this.open();
 	}
@@ -38,19 +45,22 @@ class Menu extends DomElement
 	private close()
 	{
 		this.isOpened = false;
+		this.items.forEach((item) => {
+			$(item).hide(1);
+		});
 	}
 	
 	private open()
 	{
 		this.isOpened = true;
+		this.items.forEach((item: JQuery<HTMLElement>) => {
+//			item.show(1);
+			$(item).show(1);
+		});
 	}
 }
 
-class MenuElement extends DomElement
-{
-}
-
 $(() => {
-	const menu = new Menu($("#menu"));
+	const menu = new Menu($("#menu"), $("#menu-container"));
 	menu.bindEvents();
 });

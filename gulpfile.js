@@ -5,7 +5,6 @@ const sass = require("gulp-sass");
 const ts = require('gulp-typescript');
 
 
-
 gulp.task('sass', function () {
     gulp.src('./static/styles/scss/*.scss')
         .pipe(sass().on('error', sass.logError))
@@ -18,6 +17,7 @@ gulp.task('ts', function () {
                             noImplicitAny: true,
                             outFile: 'bundle.js'
                         }))
+               .on('error', console.log)
                .pipe(gulp.dest('./static/scripts/js'));
 });
 

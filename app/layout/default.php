@@ -30,11 +30,20 @@
             </div>
 
             <div class="col text-right">
-                <div class="btn-group">
+                <div class="btn-group" id="menu-container">
                     <div class="btn btn-success">
                         order a tour
                     </div>
-                    <div id="menu" class="btn btn-secondary">
+                    <a href="#" class="btn btn-danger menu-item-optional" style="display: none;">
+                        Danger
+                    </a>
+
+                    <a href="/parthners/index" class="btn btn-primary menu-item-optional"
+                       style="display: 
+                    none;">
+                        Parthners
+                    </a>
+                    <div class="btn btn-secondary" id="menu">
                         menu
                     </div>
                 </div>
@@ -43,7 +52,7 @@
     </div>
 </header>
 
-<div id="content" style="margin-top: 10px; margin-bottom: 10px;">
+<div id="content" style="margin-bottom: 10px;">
 	<?= $viewContent ?? 'no content' ?>
 </div>
 
