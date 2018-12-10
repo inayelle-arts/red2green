@@ -12,6 +12,7 @@ $user = $user ?? null;
 
     <!--Bootstrap-->
     <link rel="stylesheet" href="/static/styles/css/bootstrap/bootstrap.css">
+    <script type="text/javascript" src="/static/scripts/js/bootstrap/bootstrap.js"></script>
 
     <!--Font Awesome-->
     <link rel="stylesheet" href="/static/styles/css/fontawesome/all.css">
@@ -44,14 +45,15 @@ $user = $user ?? null;
 
             <div class="col text-right">
                 <div class="btn-group" id="menu-container">
-                    <div class="btn btn-success">
+                    <div class="btn btn-success menu-item">
                         order a tour
                     </div>
-                    <a href="#" class="btn btn-danger menu-item-optional" style="display: none;">
-                        danger
+                    <a href="/info/warnings" class="btn btn-danger menu-item-optional" 
+                       style="display: none;">
+                        warnings
                     </a>
 
-                    <a href="/parthners/index" class="btn btn-primary menu-item-optional"
+                    <a href="/info/parthners" class="btn btn-primary menu-item-optional"
                        style="display: none;">
                         parthners
                     </a>
@@ -74,7 +76,7 @@ $user = $user ?? null;
                            style="display: none;">
                             my profile
                         </a>
-                        
+
                         <a href="/sign/out" class="btn btn-secondary menu-item-optional"
                            style="display: none;">
                             sign out
@@ -82,7 +84,7 @@ $user = $user ?? null;
 					
 					<?php } ?>
 
-                    <div class="btn btn-secondary" id="menu">
+                    <div class="btn btn-secondary menu-item" id="menu">
                         menu
                     </div>
                 </div>

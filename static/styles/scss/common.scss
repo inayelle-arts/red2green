@@ -50,6 +50,10 @@
   min-width: 100%;
 }
 
+.menu-item {
+  transition: visibility 1s ease;
+}
+
 .menu-item-optional {
-  transition: all 0.5s ease;
+  @extend .menu-item;
 }

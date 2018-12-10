@@ -3,11 +3,17 @@
 #parthners-adv-parallax {
   @extend .parallax;
 
-  background-image: url('../../img/pathrners/pathners.jpg');
+  background-image: url('/static/img/pathrners/pathners.jpg');
 
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#parthners-spacex-parallax {
+  @extend #parthners-adv-parallax;
+
+  background-image: url('/static/img/pathrners/spacex.jpg');
 }
 
 #parthners-adv-primary-text {

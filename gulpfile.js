@@ -60,6 +60,10 @@ gulp.task(
 );
 
 gulp.task('prepare-bootstrap', function () {
+    gulp.src(`${librariesRoot}/bootstrap/dist/js/bootstrap.js`)
+               .pipe(gulp.dest(`${destScripts}/bootstrap`));
+    
+    
     return gulp.src(`${librariesRoot}/bootstrap/dist/css/bootstrap.css`)
                .pipe(gulp.dest(`${destStyles}/bootstrap`));
 });

@@ -51,7 +51,7 @@ class Menu extends DomElement
 	{
 		this.isOpened = false;
 		this.items.forEach((item) => {
-			$(item).hide(1);
+			$(item).hide();
 		});
 	}
 	
@@ -59,7 +59,7 @@ class Menu extends DomElement
 	{
 		this.isOpened = true;
 		this.items.forEach((item: JQuery<HTMLElement>) => {
-			$(item).show(1);
+			$(item).show();
 		});
 	}
 	

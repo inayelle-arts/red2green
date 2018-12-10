@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/static/styles/css/tour.css">
+
 <div class="container">
     <div class="tour-container">
         <div class="tour-header">
