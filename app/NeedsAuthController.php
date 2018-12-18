@@ -20,8 +20,7 @@ class NeedsAuthController extends AppControllerBase
 	{
 		if ($this->user == null)
 		{
-			echo 'NO AUTH';
-//			$this->returnRedirect("sign/in");
+			$this->redirect('/sign/in');
 			return false;
 		}
 		
@@ -37,6 +36,8 @@ class NeedsAuthController extends AppControllerBase
 			return null;
 		}
 		
-		return json_decode($json);
+		$userData = json_decode($json, true);
+		
+		return new User($userData);
 	}
 }
