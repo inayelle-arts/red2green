@@ -10,6 +10,8 @@ interface ISessionManager
 	
 	public function hasValue(string $key) : bool;
 	
+	public function removeValue(string $key) : void;
+	
 	public function reset() : void;
 	
 	public function commit() : void;

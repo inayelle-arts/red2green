@@ -2,6 +2,8 @@
 $tourName = $data->name;
 ?>
 
+<link rel="stylesheet" href="/static/styles/css/tour.css">
+
 <div class="container">
     <div id="article-not-found">
         <div>

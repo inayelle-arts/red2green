@@ -95,7 +95,7 @@ abstract class ControllerBase implements IController
 	}
 	
 	protected function view(
-		string $view, string $layout = null, $data = null
+		string $view, string $layout = null, $data = null, $user = null
 	) : bool
 	{
 		$controllerName = $this->_getStaticShortName();

@@ -1,3 +1,8 @@
+<?php
+/** @var \app\entity\User $user */
+$user = $user ?? null;
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5,12 +10,21 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="/static/styles/css/bootstrap/bootstrap.css">
+    <script type="text/javascript" src="/static/scripts/js/bootstrap/bootstrap.js"></script>
 
-    <link rel="stylesheet" href="/static/libs/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="/static/libs/@fortawesome/fontawesome-free/css/all.css">
-    <link rel="stylesheet" href="/static/styles/css/common.css?v=<?= rand() ?>">
-    <script type="text/javascript" src="/static/libs/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="/static/scripts/js/bundle.js"></script>
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="/static/styles/css/fontawesome/all.css">
+
+    <!--Self-provided styles-->
+    <link rel="stylesheet" href="/static/styles/css/common.css">
+
+    <!--JQuery-->
+    <script type="text/javascript" src="/static/scripts/js/jquery/jquery.js"></script>
+
+    <!--Self-provided scripts-->
+    <script type="text/javascript" src="/static/scripts/js/common.js"></script>
 
     <title>Red2Green</title>
 </head>
@@ -30,11 +44,47 @@
             </div>
 
             <div class="col text-right">
-                <div class="btn-group">
-                    <div class="btn btn-success">
+                <div class="btn-group" id="menu-container">
+                    <div class="btn btn-success menu-item">
                         order a tour
                     </div>
-                    <div id="menu" class="btn btn-secondary">
+                    <a href="/info/warnings" class="btn btn-danger menu-item-optional" 
+                       style="display: none;">
+                        warnings
+                    </a>
+
+                    <a href="/info/parthners" class="btn btn-primary menu-item-optional"
+                       style="display: none;">
+                        parthners
+                    </a>
+					
+					<?php if ($user == null) { ?>
+
+                        <a href="/sign/in" class="btn btn-secondary menu-item-optional"
+                           style="display: none;">
+                            sign in
+                        </a>
+
+                        <a href="/sign/up" class="btn btn-secondary menu-item-optional"
+                           style="display: none;">
+                            sign up
+                        </a>
+					
+					<?php } else { ?>
+
+                        <a href="/profile/index" class="btn btn-secondary menu-item-optional"
+                           style="display: none;">
+                            my profile
+                        </a>
+
+                        <a href="/sign/out" class="btn btn-secondary menu-item-optional"
+                           style="display: none;">
+                            sign out
+                        </a>
+					
+					<?php } ?>
+
+                    <div class="btn btn-secondary menu-item" id="menu">
                         menu
                     </div>
                 </div>

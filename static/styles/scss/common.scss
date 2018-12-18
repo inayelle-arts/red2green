@@ -49,3 +49,11 @@
   height: 500px;
   min-width: 100%;
 }
+
+.menu-item {
+  transition: visibility 1s ease;
+}
+
+.menu-item-optional {
+  @extend .menu-item;
+}

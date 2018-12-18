@@ -29,6 +29,7 @@ class PatternRoute extends RouteBase
 			$this->_routeParams = new RouteParams($match);
 			
 			$this->_bindParams();
+			
 			$this->_validateMvcParams();
 			
 			return true;

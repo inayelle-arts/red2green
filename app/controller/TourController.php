@@ -7,8 +7,6 @@ use app\model\Tours;
 
 class TourController extends AppControllerBase
 {
-	protected const DEFAULT_LAYOUT = 'tour';
-	
 	/** @var Tours */
 	private $_model;
 	
